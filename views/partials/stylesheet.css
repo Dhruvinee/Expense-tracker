@@ -1,0 +1,21 @@
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;     /* Space on left and right */
+    margin: 20px auto;   /* Center it on the page */
+}
+
+.form-inline {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;     /* allows wrap on small screens */
+    align-items: center;
+    gap: 10px;           /* spacing between elements */
+}
+
+.profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
