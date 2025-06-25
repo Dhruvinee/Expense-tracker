@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head") %>
+    <title>Home</title>
+</head>
+<body>
+    <%- include("./partials/navbar") %>
+
+    <div class="expensetrack-nav mt-4" style = "margin-left: 5rem; margin-right: 5rem;" >
+        <form action="/transaction" method="POST" class="d-flex gap-2">
+
+            <input type="date" class="form-control" name="date" placeholder="Select a Date" id="datePicker">
+        
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <div class="container mt-4">
+        <% if (allTransactions && allTransactions.length > 0) { %>
+                <table class="table table-bordered border-black">
+                    <thead>
+                        <tr>
+                            <th>Sr No.</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% allTransactions.forEach((transaction, index) => { %>
+                            <% if (transaction.typeOfTransaction === "Debit") { %>
+                                <tr class="table-danger">
+                            <% } else{%>
+                                <tr class="table-success">
+                            <% } %>
+                            <td><%= index + 1 %></td>
+                            <td><%= transaction.typeOfTransaction %></td>
+                            <td><%= transaction.amount %></td>
+                            <td><%= transaction.category %></td>
+                            <td><%= transaction.dateOfTransaction %></td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            <% } else {%>
+                <div class="container mt-4">
+                    <div class="alert alert-warning">No transaction Found</div>
+                </div>
+            <% } %>
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr("#datePicker", {
+            dateFormat: "Y-m-d", // Format that matches what you expect in backend
+            maxDate: "today",
+        });
+    </script>
+
+</body>
+</html>

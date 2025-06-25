@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head") %>
+    <title>Profile</title>
+</head>
+<body>
+    <%- include("./partials/navbar") %>
+
+    
+    <%if(locals.user){%>
+            <div class="profile" style = "margin-left: 5rem; margin-top: 2rem; border: 2px solid black; width: 250px;">
+                <div><img src="/uploads/<%= user.profileImageURL %>" alt="Profile Image" width="150px" height = "150px" style = "border-width:1rem; border-color:  black; border-radius: 50%; object-fit: cover;" /></div>
+                <div><h3><%= user.fullName %></h3></div> 
+            </div>
+    <%} %>
+
+
+    
+    <%- include("./partials/script") %>
+</body>
+</html>
